@@ -6,12 +6,11 @@ import { Link } from '@/presentation/components';
 export const NotFound: React.FC = () => {
   return (
     <NotFoundStyles.Container>
-      <NotFoundIcon />
-      <h4>Page not found!</h4>
-      <p>Oops! We couldn’t find the page that you’re looking for.</p>
+      <h4>Página não encontrada!</h4>
+      <p>Oops! Não conseguimos encontrar a página que você está procurando.</p>
 
       <Link href="/">
-        <Button.Default>Go to Home</Button.Default>
+        <Button.Default>Página inicial</Button.Default>
       </Link>
     </NotFoundStyles.Container>
   );

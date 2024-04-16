@@ -96,7 +96,9 @@ export const Header: React.FC = () => {
                 </HeaderStyles.Account>
               </>
             ) : (
-              <Button.Default>{t('Criar conta')}</Button.Default>
+              <Link href="/cadastrar">
+                <Button.Default>{t('Criar conta')}</Button.Default>
+              </Link>
             )}
           </Grid>
           <Grid
