@@ -13,7 +13,6 @@ import { useTranslate } from '@/core/hooks/useTranslate';
 import { Button, Link } from '@/presentation/components';
 import { useModal } from '@/core/hooks/useModal';
 import ninjaPoints from '@/presentation/assets/ninja-points.webp';
-import { usePoints } from '@/core/hooks/usePoints';
 
 import { MenuStyles } from './styles';
 
@@ -23,12 +22,6 @@ export const Menu: React.FC = () => {
 
   const router = useRouter();
   const { menu, setMenu } = useMenu();
-  const { userCommunityData: communityPoints, userPlatformData: platformData } =
-    usePoints();
-
-  const platformPoints = platformData?.points || 0;
-
-  const totalPoints = communityPoints + platformPoints;
 
   const { openModal } = useModal();
 
