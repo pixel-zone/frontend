@@ -102,7 +102,7 @@ export const Arena: React.FC<IArena> = ({ match }) => {
                   })
                 }
               >
-                {t('Join Match')}
+                Entrar na Partida
               </Button.Default>
             ) : (
               <>
