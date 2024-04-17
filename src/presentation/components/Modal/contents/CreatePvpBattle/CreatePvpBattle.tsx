@@ -42,7 +42,7 @@ export const CreatePvpBattle = ({
   return (
     <CreatePvpBattleStyles.Container>
       <CreatePvpBattleStyles.Header>
-        <h4>{opponent ? t('Join Match') : t('Criar Partida')}</h4>
+        <h4>{opponent ? 'Entrar na Partida' : t('Criar Partida')}</h4>
         <div onClick={() => closeModal()}>
           <Close />
         </div>
