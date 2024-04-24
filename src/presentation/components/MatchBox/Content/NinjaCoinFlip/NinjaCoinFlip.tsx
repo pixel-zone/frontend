@@ -5,7 +5,6 @@ import { Arena } from './components/Arena';
 
 import { slots } from './components/utils/slots';
 
-import { useMemecoinFlip } from '@/core/hooks/useMemecoinFlip/useMemecoinFlip';
 import { useModal } from '@/core/hooks/useModal';
 
 import { MatchBoxStyles } from '../../styles';
@@ -14,15 +13,6 @@ import { Grid } from '@mui/material';
 
 export const NinjaCoinFlipPvp: React.FC = () => {
   const { t } = useTranslation();
-
-  const {
-    memecoins,
-    matchOpens,
-    withdrawBalance,
-    withDraw,
-    withDrawOld,
-    withdrawBalanceOld,
-  } = useMemecoinFlip();
 
   const { openModal } = useModal();
 
@@ -38,7 +28,7 @@ export const NinjaCoinFlipPvp: React.FC = () => {
           }}
         >
           <h4>{t('Cyber Coin Flip')}</h4>
-          <p>{`(${t('Partidas Abertas')}: ${matchOpens})`}</p>
+          <p>{`(${t('Partidas Abertas')}: ${0})`}</p>
         </Grid>
         <Grid
           xs={12}
@@ -56,14 +46,6 @@ export const NinjaCoinFlipPvp: React.FC = () => {
           >
             {t('Criar Partida')}
           </Button.Default>
-          <span>|</span>
-          <Button.Default
-            disabled={!withdrawBalance}
-            type="button"
-            onClick={() => withDraw()}
-          >
-            {t('Resgatar')}: {withdrawBalance?.toFixed(2)} Pixel Points
-          </Button.Default>
           {/* <span>|</span> */}
           {/* <Button.Default
             disabled={!withdrawBalanceOld}
@@ -77,16 +59,16 @@ export const NinjaCoinFlipPvp: React.FC = () => {
       </NinjaCoinFlipStyles.Info>
 
       <MatchBoxStyles.PvPMatchesContainer>
-        {memecoins?.map(match => (
+        {/* {memecoins?.map(match => (
           <Arena match={match} key={match?.id} />
-        ))}
-        {slots.slice(matchOpens).map((_, index) => {
-          return (
-            <NinjaCoinFlipStyles.Slot key={index}>
-              <p>{t('Waiting for match')}...</p>
-            </NinjaCoinFlipStyles.Slot>
-          );
-        })}
+        ))} */}
+        {/* {slots.slice(matchOpens).map((_, index) => { */}
+        return (
+        <NinjaCoinFlipStyles.Slot key={2}>
+          <p>Esperando por partida...</p>
+        </NinjaCoinFlipStyles.Slot>
+        );
+        {/* })} */}
       </MatchBoxStyles.PvPMatchesContainer>
     </>
   );

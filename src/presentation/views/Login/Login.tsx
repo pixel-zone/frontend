@@ -3,7 +3,8 @@ import { TextField, Button, Link } from '@mui/material';
 import { styled } from '@mui/system';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useRouter } from 'next/router';
+
+import { useLogin } from '@/core/hooks/useLogin';
 
 const FormContainer = styled('form')`
   display: flex;
@@ -57,9 +58,9 @@ const Title = styled('h1')`
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const router = useRouter();
+  const { login } = useLogin();
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     // Handle form submission logic here
     if (email && password) {
@@ -68,17 +69,16 @@ export const Login = () => {
         toast.error('A senha deve ter pelo menos 8 caracteres!');
       } else {
         // Close all other toasts before showing success toast
-        toast.dismiss();
-        toast.success('Login efetuado com sucesso!');
+        try {
+          await login({ email: email, senha: password });
+        } catch (error) {
+          console.error('Erro ao fazer login: ', error);
+        }
       }
     } else {
       // Display error message or prevent form submission
       toast.error('Por favor, preencha todos os campos!');
     }
-  };
-
-  const handleSignUpClick = () => {
-    router.push('/signup');
   };
 
   return (
@@ -113,11 +113,7 @@ export const Login = () => {
       >
         Entrar
       </YellowButton>
-      <Link
-        href="/cadastrar"
-        onClick={handleSignUpClick}
-        style={{ color: '#fff' }}
-      >
+      <Link href="/cadastrar" style={{ color: '#fff' }}>
         Não tem uma conta? Cadastre-se aqui.
       </Link>
     </FormContainer>

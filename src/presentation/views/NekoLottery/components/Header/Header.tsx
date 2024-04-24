@@ -6,16 +6,12 @@ import ticketIcon from '@/presentation/assets/neko-lottery/ticket.png';
 import sideLeft from '@/presentation/assets/neko-lottery/side-left.png';
 import sideRight from '@/presentation/assets/neko-lottery/side-right.png';
 
-import { useNekoLottery } from '@/core/hooks/useNekoLottery';
-
 import { HeaderStyles } from './styles';
 import { useModal } from '@/core/hooks/useModal';
 
 export const Header: React.FC = () => {
   const { t } = useTranslation();
   const { openModal } = useModal();
-
-  const { lottery } = useNekoLottery();
 
   return (
     <HeaderStyles.Container container>
@@ -49,10 +45,7 @@ export const Header: React.FC = () => {
           gap="2.5rem"
         >
           <HeaderStyles.infosLottery>
-            <h4>
-              {(Number(lottery?.amount) / 10 ** 18 || 0)?.toFixed(2)} Pixel
-              Points
-            </h4>
+            <h4>{(Number(0) / 10 ** 18 || 0)?.toFixed(2)} Pixel Points</h4>
             <p>{t('in prizes')}</p>
           </HeaderStyles.infosLottery>
           {/* <Image
