@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
-import { TextField, Button, Link } from '@mui/material';
+import {
+  TextField,
+  Button,
+  Link,
+  Radio,
+  FormControlLabel,
+} from '@mui/material';
 import { styled } from '@mui/system';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router';
+import { useSignUp } from '@/core/hooks/useSignUp';
 
 const FormContainer = styled('form')`
   display: flex;
@@ -58,9 +65,11 @@ export const SignUp = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isSponsor, setIsSponsor] = useState(false); // Added state for sponsor
   const router = useRouter();
+  const { createAccount } = useSignUp();
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     // Handle form submission logic here
     if (username && email && password) {
@@ -70,9 +79,21 @@ export const SignUp = () => {
       } else if (password.length < 8) {
         toast.error('A senha deve ter pelo menos 8 caracteres!');
       } else {
-        // Close all other toasts before showing success toast
-        toast.dismiss();
-        toast.success('Cadastro efetuado com sucesso!');
+        try {
+          await createAccount({
+            username: username,
+            email: email,
+            senha: password,
+            type: isSponsor ? 4 : 1, // Set type based on isSponsor state
+          });
+          // Close all other toasts before showing success toast
+
+          router.push('/login'); // Redirecionar para a página de login após o cadastro bem-sucedido
+        } catch (error) {
+          toast.error(
+            'Ocorreu um erro ao criar a conta. Por favor, tente novamente.',
+          );
+        }
       }
     } else {
       // Display error message or prevent form submission
@@ -92,7 +113,10 @@ export const SignUp = () => {
         variant="outlined"
         inputProps={{ style: { color: '#fdfe02' } }}
         value={username}
-        onChange={event => setUsername(event.target.value)}
+        onChange={event => {
+          setUsername(event.target.value);
+          console.log('username', event.target.value);
+        }}
       />
       <WhiteTextField
         label="Email"
@@ -100,7 +124,10 @@ export const SignUp = () => {
         type="email"
         inputProps={{ style: { color: '#fdfe02' } }}
         value={email}
-        onChange={event => setEmail(event.target.value)}
+        onChange={event => {
+          setEmail(event.target.value);
+          console.log('email', event.target.value);
+        }}
       />
       <WhiteTextField
         label="Senha"
@@ -110,10 +137,24 @@ export const SignUp = () => {
           style: { color: '#fdfe02' },
         }}
         value={password}
-        onChange={event => setPassword(event.target.value)}
+        onChange={event => {
+          setPassword(event.target.value);
+          console.log('password', event.target.value);
+        }}
         helperText="A senha deve ter pelo menos 8 caracteres."
         FormHelperTextProps={{ style: { color: '#fdfe02' } }}
         InputLabelProps={{ style: { color: '#fdfe02' } }}
+      />
+      <FormControlLabel
+        control={
+          <Radio
+            checked={isSponsor}
+            onChange={() => setIsSponsor(!isSponsor)}
+            color="primary"
+            style={{ color: '#fdfe02' }}
+          />
+        }
+        label={<span style={{ color: '#fdfe02' }}>Sou Patrocinador</span>}
       />
       <YellowButton
         type="submit"

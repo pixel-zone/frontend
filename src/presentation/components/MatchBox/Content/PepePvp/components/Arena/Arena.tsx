@@ -15,7 +15,6 @@ import { usePlay } from '@/core/hooks/usePlay';
 import { useAccountState } from '@/core/states/account';
 
 import { ArenaStyles } from './styles';
-import { usePvpBattles } from '@/core/hooks/usePvpBattles/usePvpBattles';
 
 interface IArena {
   match: IBattles;
@@ -24,7 +23,6 @@ interface IArena {
 export const Arena: React.FC<IArena> = ({ match }) => {
   const { t } = useTranslation();
 
-  const { cancelPvpBattle, loadingCancel } = usePvpBattles();
   const { openModal } = useModal();
   const { account } = useAccountState();
 
@@ -64,22 +62,9 @@ export const Arena: React.FC<IArena> = ({ match }) => {
               {t('Ticket')}: {(Number(match?.ticket) / 10 ** 18)?.toFixed(2)}{' '}
               Pixel Points
             </p>
-            {match?.creator === account ? (
-              <Button.Default
-                disabled={loadingCancel}
-                onClick={() => cancelPvpBattle({ id: match?.id })}
-              >
-                {loadingCancel ? 'Canceling...' : 'Cancel'}
-              </Button.Default>
-            ) : null}
           </ArenaStyles.Header>
           <MatchBoxStyles.SidePvp>
             {ninjasSlot[match?.creator_ninja as keyof typeof ninjasSlot]}
-            <div>
-              {match?.creator === account
-                ? 'You'
-                : formatAddress(getEthereumAddress(match?.creator))}
-            </div>
           </MatchBoxStyles.SidePvp>{' '}
           <small>
             {count <= 3 && match?.finished

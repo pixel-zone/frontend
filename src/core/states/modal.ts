@@ -1,11 +1,6 @@
 import { atom, useRecoilState } from 'recoil';
 
-type IModalsName =
-  | 'createCoinFlip'
-  | 'createPvpBattle'
-  | 'buyNekoLottery'
-  | 'buyBattleRoyale'
-  | '';
+type IModalsName = 'createCoinFlip' | 'createPvpBattle' | 'buyNekoLottery' | '';
 
 interface IModal {
   name: IModalsName;

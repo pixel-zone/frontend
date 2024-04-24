@@ -10,7 +10,6 @@ import ninjaPink from '@/presentation/assets/pvp-battles/ninja-red-slot.png';
 
 import { useModal } from '@/core/hooks/useModal';
 import { Button } from '@/presentation/components';
-import { usePvpBattles } from '@/core/hooks/usePvpBattles/usePvpBattles';
 import { handleInputChange } from '@/core/utils/formats';
 
 import { CreatePvpBattleStyles } from './styles';
@@ -30,8 +29,6 @@ export const CreatePvpBattle = ({
 }: ICreatePvpBattle) => {
   const { t } = useTranslation();
 
-  const { createPvpBattle, fightPvpBattles, loadingCreating, fightLoading } =
-    usePvpBattles();
   const { closeModal } = useModal();
 
   const [selected, setSelected] = useState(0);
@@ -120,24 +117,9 @@ export const CreatePvpBattle = ({
           </div>
           <Button.Default
             disabled={selected === 0 || (!opponent && !newAmount)}
-            onClick={() =>
-              opponent
-                ? fightPvpBattles({
-                    amount: ticket,
-                    id,
-                    side: selected,
-                  })
-                : createPvpBattle({ amount: newAmount, side: selected })
-            }
             type="button"
           >
-            {opponent
-              ? fightLoading
-                ? `${t('Joining')}...`
-                : t('Join')
-              : loadingCreating
-              ? `${t('Creating')}...`
-              : t('Criar')}
+            Criar
           </Button.Default>
         </form>
       </CreatePvpBattleStyles.Content>
