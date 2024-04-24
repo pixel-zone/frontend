@@ -18,12 +18,6 @@ const BuyNekoLottery = dynamic(() =>
   ),
 );
 
-const BuyBattleRoyale = dynamic(() =>
-  import('./BuyBattleRoyale/BuyBattleRoyale').then(
-    component => component.BuyBattleRoyale,
-  ),
-);
-
 interface IModals {
   props: any;
 }
@@ -33,7 +27,6 @@ export const modals = ({ props }: IModals) => {
     createCoinFlip: <CreateCoinFlip {...props} />,
     createPvpBattle: <CreatePvpBattle {...props} />,
     buyNekoLottery: <BuyNekoLottery {...props} />,
-    buyBattleRoyale: <BuyBattleRoyale {...props} />,
     '': null,
   };
 };

@@ -1,4 +1,4 @@
-import { Explanations, Games, HighLight, Infos } from './components';
+import { Games, HighLight } from './components';
 
 import { HomeStyles } from './styles';
 
@@ -7,7 +7,6 @@ export const Home: React.FC = () => {
     <HomeStyles.Container>
       <HighLight />
       <Games />
-      <Infos />
     </HomeStyles.Container>
   );
 };

@@ -6,13 +6,10 @@ import { Close } from '@/presentation/assets/wallet/close';
 import { Button } from '@/presentation/components';
 import { useModal } from '@/core/hooks/useModal';
 import neko from '@/presentation/assets/nekoicon.webp';
-import { useNekoLottery } from '@/core/hooks/useNekoLottery';
 import lottery from '@/presentation/assets/tickets-float.png';
 import { BuyNekoLotteryStyles } from './styles';
 
 export const BuyNekoLottery: React.FC = () => {
-  const { buyTicket, loadingBuy: loading } = useNekoLottery();
-
   const [inputAmount, setInputAmount] = useState<number | string>();
   const { closeModal } = useModal();
 
@@ -53,9 +50,7 @@ export const BuyNekoLottery: React.FC = () => {
           onChange={e => setInputAmount(validateTickets(e))}
           value={inputAmount}
         />
-        <Button.Default onClick={() => buyTicket({ amountTickets: amount })}>
-          Comprar
-        </Button.Default>
+        <Button.Default>Comprar</Button.Default>
       </BuyNekoLotteryStyles.ButtonsContainer>
     </BuyNekoLotteryStyles.Container>
   );

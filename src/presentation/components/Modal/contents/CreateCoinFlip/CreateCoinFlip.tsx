@@ -5,7 +5,6 @@ import ninjaCoinTails from '@/presentation/assets/ninja-tails.png';
 
 import { useModal } from '@/core/hooks/useModal';
 import { Button } from '@/presentation/components';
-import { useMemecoinFlip } from '@/core/hooks/useMemecoinFlip/useMemecoinFlip';
 import { Close } from '@/presentation/assets/wallet/close';
 import { handleInputChange } from '@/core/utils/formats';
 import { CreateCoinFlipStyles } from './styles';
@@ -15,8 +14,6 @@ export const CreateCoinFlip: React.FC = () => {
   const { t } = useTranslation();
 
   const { closeModal } = useModal();
-
-  const { createMemecoinFlip, loadingCreate } = useMemecoinFlip();
 
   const [coin, setCoin] = useState<'heads' | 'tails' | ''>('');
   const [amount, setAmount] = useState('');
@@ -72,17 +69,8 @@ export const CreateCoinFlip: React.FC = () => {
             </div>
           </CreateCoinFlipStyles.Coins>
         </div>
-        <Button.Default
-          disabled={coin === '' || loadingCreate || !newAmount}
-          onClick={() =>
-            createMemecoinFlip({
-              amount: newAmount,
-              side: coin === 'heads' ? 0 : 1,
-            })
-          }
-          type="button"
-        >
-          {loadingCreate ? `${t('Criando')}...` : t('Criar')}
+        <Button.Default disabled={coin === '' || !newAmount} type="button">
+          Criar
         </Button.Default>
       </form>
     </CreateCoinFlipStyles.Container>

@@ -3,17 +3,12 @@ import { Grid } from '@mui/material';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 
-import { usePrice } from '@/core/hooks/usePrice';
-import { useNekoLottery } from '@/core/hooks/useNekoLottery';
 import { Button } from '@/presentation/components';
 import { useModal } from '@/core/hooks/useModal';
 import { DetailsStyles } from './styles';
 
 export const Details = () => {
   const { t } = useTranslation();
-
-  const { lottery, howManyTickets } = useNekoLottery();
-  const { price } = usePrice();
   const { openModal } = useModal();
   const [currentTime, setCurrentTime] = useState<any>(moment());
 
@@ -60,11 +55,11 @@ export const Details = () => {
           </div>
           <div>
             <p>{t('Seus tickets ')}:</p>
-            <span>{howManyTickets || 0}</span>
+            <span>{0}</span>
           </div>
           <div>
             <p>{t('total de Tickets')}:</p>
-            <span>{Number(lottery?.ticket) / 10 ** 18 || 0} tickets</span>
+            <span>{Number(0) / 10 ** 18 || 0} tickets</span>
           </div>
         </DetailsStyles.DetailsContent>
         <DetailsStyles.DetailsFooter>

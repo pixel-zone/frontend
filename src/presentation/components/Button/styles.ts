@@ -47,6 +47,7 @@ const Outlined = styled.button`
   border: 1px solid #676711;
 
   &:hover {
+    color: #000000;
     background: ${({ theme }) => theme.colors.primary['03']};
   }
 

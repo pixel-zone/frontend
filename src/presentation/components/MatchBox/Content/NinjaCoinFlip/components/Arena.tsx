@@ -16,7 +16,6 @@ import { usePlay } from '@/core/hooks/usePlay';
 import { formatAddress } from '@/core/utils/formats';
 import { getEthereumAddress } from '@injectivelabs/sdk-ts';
 import { IMemecoinFlip } from '@/core/entities/MemecoinFlip';
-import { useMemecoinFlip } from '@/core/hooks/useMemecoinFlip/useMemecoinFlip';
 
 import { MatchBoxStyles } from '../../../styles';
 
@@ -33,9 +32,6 @@ export const Arena: React.FC<IArena> = ({ match }) => {
   const { account } = useAccountState();
 
   const { status, count } = usePlay({ match });
-
-  const { fightPvpBattles, cancelMemecoinFlip, loadingCancel } =
-    useMemecoinFlip();
 
   if (status === 'finished') {
     return null;
@@ -66,25 +62,13 @@ export const Arena: React.FC<IArena> = ({ match }) => {
               {t('Ticket')}: {(Number(match?.ticket) / 10 ** 18)?.toFixed(2)}{' '}
               Pixel Points
             </p>
-            {match?.creator === account ? (
-              <Button.Default
-                disabled={loadingCancel}
-                onClick={() => cancelMemecoinFlip({ id: match?.id })}
-              >
-                {loadingCancel ? 'Canceling...' : 'Cancel'}
-              </Button.Default>
-            ) : null}
           </ArenaStyles.Header>
           <MatchBoxStyles.SidePvp>
             <ArenaStyles.ImageCoin
               src={coin?.[match?.creator_side as keyof typeof coin]}
               alt="pepe"
             />
-            <div>
-              {match?.creator === account
-                ? 'You'
-                : formatAddress(getEthereumAddress(match?.creator))}
-            </div>
+            <div></div>
           </MatchBoxStyles.SidePvp>
           <small>
             {count <= 3 && match?.finished
@@ -93,17 +77,7 @@ export const Arena: React.FC<IArena> = ({ match }) => {
           </small>
           <MatchBoxStyles.SidePvp>
             {!match?.opponent ? (
-              <Button.Outlined
-                type="button"
-                onClick={() =>
-                  fightPvpBattles({
-                    amount: Number(match?.ticket) / 10 ** 18,
-                    id: match?.id,
-                  })
-                }
-              >
-                {t('Join Match')}
-              </Button.Outlined>
+              <Button.Outlined type="button">Entrar na Partida</Button.Outlined>
             ) : (
               <>
                 <ArenaStyles.ImageCoin
@@ -114,11 +88,7 @@ export const Arena: React.FC<IArena> = ({ match }) => {
                   }
                   alt="pepe"
                 />
-                <div>
-                  {match?.opponent === account
-                    ? 'You'
-                    : formatAddress(getEthereumAddress(match?.opponent))}
-                </div>
+                <div></div>
               </>
             )}
           </MatchBoxStyles.SidePvp>

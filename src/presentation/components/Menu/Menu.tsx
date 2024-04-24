@@ -8,7 +8,6 @@ import { useMenu } from '@/core/states/menu';
 import { menuItems } from './utils/items';
 
 import { ILanguages } from '@/core/states/languages';
-import { useTranslate } from '@/core/hooks/useTranslate';
 
 import { Button, Link } from '@/presentation/components';
 import { useModal } from '@/core/hooks/useModal';
@@ -18,7 +17,6 @@ import { MenuStyles } from './styles';
 
 export const Menu: React.FC = () => {
   const { t } = useTranslation();
-  const { setLanguage, language } = useTranslate();
 
   const router = useRouter();
   const { menu, setMenu } = useMenu();

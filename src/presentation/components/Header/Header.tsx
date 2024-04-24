@@ -4,22 +4,20 @@ import Image from 'next/image';
 import { useTranslation } from 'react-i18next';
 
 import { Button } from '@/presentation/components/Button/Button';
-import Logo from '@/presentation/assets/cyberjam.png';
+import Logo from '@/presentation/assets/pixelzone.png';
 import arrowDown from '@/presentation/assets/arrow-down.png';
 import menuIcon from '@/presentation/assets/menu.webp';
 import { Profile } from '@/presentation/assets/profile';
 import { useMenu } from '@/core/states/menu';
 import blueX from '@/presentation/assets/blue-x.png';
-
+import { useAccountState } from '@/core/states/account';
 import { HeaderStyles } from './styles';
-import { useAccountBalance } from '@/core/hooks/useAccountBalance';
 
 export const Header: React.FC = () => {
   const { t } = useTranslation();
 
-  const { balance } = useAccountBalance();
   const { setMenu, menu } = useMenu();
-
+  const { account, setAccount } = useAccountState();
   return (
     <>
       <HeaderStyles.Container>
@@ -44,14 +42,19 @@ export const Header: React.FC = () => {
           >
             <Link href="/">
               <Image
-                width={35}
-                height={45}
+                width={200}
+                height={200}
                 quality={100}
                 src={Logo}
-                alt="Ninja Labs"
+                alt="logo"
               />
             </Link>
-            PixelZone
+            {account.user_type_id === 2 && (
+              <p style={{ color: 'red' }}>{`<Admin Mode />`}</p>
+            )}
+            {account.user_type_id === 4 && (
+              <p style={{ color: 'green' }}>{`<Sponsor Mode />`}</p>
+            )}
           </Grid>
           <Grid
             md={6}
@@ -75,30 +78,50 @@ export const Header: React.FC = () => {
                     <p> {t('Ninja Points')}</p>
                   </HeaderStyles.Account>
                 </Link> */}
+              </>
+            ) : account.isLogged ? (
+              <>
+                <Button.Default
+                  style={{
+                    width: 'fit-content',
+                    padding: '0.5rem 2rem',
+                    whiteSpace: 'nowrap',
+                  }}
+                >{`Bem vindo(a) ${account.username}`}</Button.Default>
 
-                <HeaderStyles.Account>
-                  <p>Points Balances:</p> {balance} Pixel Points
-                </HeaderStyles.Account>
-                <HeaderStyles.Account>
-                  <Profile />
-                  Conta X
-                  <span>
-                    <Image
-                      src={arrowDown}
-                      alt="arrow down"
-                      width={12}
-                      height={6}
-                    />
-                  </span>
-                  <div>
-                    <Button.Outlined> {t('Sair')}</Button.Outlined>
-                  </div>
-                </HeaderStyles.Account>
+                <Link href="/conta">
+                  <Button.Default
+                    style={{ width: '12rem', padding: '0.5rem 2rem' }}
+                  >
+                    Minha Conta
+                  </Button.Default>
+                </Link>
+                <Button.Outlined
+                  onClick={prev =>
+                    setAccount({
+                      ...prev,
+                      id: 0,
+                      isLogged: false,
+                      username: '',
+                      email: '',
+                      points: 0,
+                      items: 0,
+                      user_type_id: 1,
+                    })
+                  }
+                >
+                  Logout
+                </Button.Outlined>
               </>
             ) : (
-              <Link href="/cadastrar">
-                <Button.Default>{t('Criar conta')}</Button.Default>
-              </Link>
+              <>
+                <Link href="/cadastrar">
+                  <Button.Default>{t('Criar conta')}</Button.Default>
+                </Link>
+                <Link href="/login">
+                  <Button.Outlined>login</Button.Outlined>
+                </Link>
+              </>
             )}
           </Grid>
           <Grid
