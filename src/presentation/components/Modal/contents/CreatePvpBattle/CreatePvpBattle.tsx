@@ -17,14 +17,12 @@ import { CreatePvpBattleStyles } from './styles';
 interface ICreatePvpBattle {
   opponent: boolean;
   id: number;
-  ticket: number;
   creator: number;
 }
 
 export const CreatePvpBattle = ({
   opponent,
   id,
-  ticket,
   creator,
 }: ICreatePvpBattle) => {
   const { t } = useTranslation();
@@ -48,33 +46,6 @@ export const CreatePvpBattle = ({
         $isWarningVisible={amount !== '' && newAmount < 0.1}
       >
         <form>
-          <div>
-            <label>
-              {t('Ticket')}:{' '}
-              {!opponent ? <small>(Min 0.001 Pixel Points</small> : null}
-              <small>
-                {opponent
-                  ? `(${Number(ticket)?.toFixed(2)}) Pixel Points`
-                  : null}
-              </small>
-            </label>
-            {!opponent ? (
-              <>
-                <input
-                  placeholder="0.1"
-                  onChange={e => {
-                    handleInputChange({
-                      event: e,
-                      setAmount: setAmount,
-                    });
-                  }}
-                  value={amount}
-                />
-                <span>{t('The minimum amount is')} 0.001 Pixel Points</span>
-              </>
-            ) : null}
-          </div>
-
           <div>
             <label>{t('Escolha um robô')}:</label>
             <div>

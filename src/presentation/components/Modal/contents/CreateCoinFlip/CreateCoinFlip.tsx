@@ -32,21 +32,6 @@ export const CreateCoinFlip: React.FC = () => {
       </CreateCoinFlipStyles.Header>
       <form>
         <div>
-          <label>
-            {t('Ticket')}: <small>(Min 0.001 Pixel Points)</small>
-          </label>
-          <input
-            placeholder="0.1"
-            onChange={e => {
-              handleInputChange({
-                event: e,
-                setAmount: setAmount,
-              });
-            }}
-          />
-          <span>{t('The minimum amount is')} 0.001 Pixel Points</span>
-        </div>
-        <div>
           <label>{t('Escolha um lado')}:</label>
           <CreateCoinFlipStyles.Coins>
             <div>

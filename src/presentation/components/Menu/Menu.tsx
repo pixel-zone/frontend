@@ -34,9 +34,11 @@ export const Menu: React.FC = () => {
               </MenuStyles.Account>
             </>
           ) : (
-            <Button.Default id="connect">
-              <Trans>{t('Connect Wallet')}</Trans>
-            </Button.Default>
+            <Link href="/login">
+              <Button.Default id="connect" style={{ width: '10rem' }}>
+                <Trans>{t('Login')}</Trans>
+              </Button.Default>
+            </Link>
           )}
         </MenuStyles.Connect>
         {menuItems.map(item =>
@@ -64,22 +66,6 @@ export const Menu: React.FC = () => {
             </MenuStyles.Item>
           ),
         )}
-
-        {/* <MenuStyles.Languages>
-          {languages.map(({ img, lang }) => {
-            return (
-              <MenuStyles.Language
-                key={lang}
-                onClick={() => {
-                  setLanguage(lang as ILanguages);
-                }}
-                $selected={lang === language}
-              >
-                {img}
-              </MenuStyles.Language>
-            );
-          })}
-        </MenuStyles.Languages> */}
       </MenuStyles.Content>
     </MenuStyles.Container>
   );
