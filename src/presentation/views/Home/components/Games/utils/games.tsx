@@ -1,4 +1,4 @@
-import ninjaCoinFlip from '@/presentation/assets/ninja-coin-flip-game.png';
+import CyberFlip from '@/presentation/assets/ninja-coin-flip-game.png';
 import nekoGame from '@/presentation/assets/neko-game.png';
 import pepeDraw from '@/presentation/assets/pepe-draw-game.png';
 import connectFour from '@/presentation/assets/connect-four-game.png';

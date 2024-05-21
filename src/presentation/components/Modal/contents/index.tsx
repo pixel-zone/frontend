@@ -12,9 +12,9 @@ const CreatePvpBattle = dynamic(() =>
   ),
 );
 
-const BuyNekoLottery = dynamic(() =>
-  import('./BuyNekoLottery/BuyNekoLottery').then(
-    component => component.BuyNekoLottery,
+const BuyQuantumLottery = dynamic(() =>
+  import('./BuyQuantumLottery/BuyQuantumLottery').then(
+    component => component.BuyQuantumLottery,
   ),
 );
 
@@ -26,7 +26,7 @@ export const modals = ({ props }: IModals) => {
   return {
     createCoinFlip: <CreateCoinFlip {...props} />,
     createPvpBattle: <CreatePvpBattle {...props} />,
-    buyNekoLottery: <BuyNekoLottery {...props} />,
+    buyQuantumLottery: <BuyQuantumLottery {...props} />,
     '': null,
   };
 };

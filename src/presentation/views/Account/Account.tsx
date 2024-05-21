@@ -86,14 +86,6 @@ const AdsTableCell = styled(TableCell)`
   color: #111105;
 `;
 
-const handleApproveAd = (adId: number) => {
-  // Logic to approve the ad
-};
-
-const handleRejectAd = (adId: number) => {
-  // Logic to reject the ad
-};
-
 export const Account = () => {
   const { account } = useAccountState();
   const permEmail = account.email;
@@ -163,9 +155,7 @@ export const Account = () => {
   };
 
   const handleUserIdChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.value);
-    setBanUserId(event.target.value);
-    console.log('ban user id: ', banUserId);
+    setBanUserId(Number(event.target.value));
   };
 
   const handleAdsRequest = async () => {
@@ -176,6 +166,7 @@ export const Account = () => {
   useEffect(() => {
     handleAdsRequest();
   }, [notVerifiedAds]);
+
   return (
     <div>
       <FormContainer onSubmit={handleSubmit}>
@@ -325,62 +316,69 @@ export const Account = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {notVerifiedAds.map(ad => (
-                    <AdsTableRow key={ad.id}>
-                      <AdsTableCell>{ad.id}</AdsTableCell>
-                      <AdsTableCell>
-                        <div
-                          style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            gap: '0 1rem',
-                          }}
-                        >
-                          <img
-                            src={`data:image/jpeg;base64,${ad.ad}`}
-                            alt="Ad Image"
-                            style={{ width: '50px', height: '50px' }}
-                          />
-                          <Button.Default
-                            style={{
-                              maxWidth: '4rem',
-                              borderRadius: '0.5rem',
-                              height: '2rem',
-                              marginLeft: '.25rem',
-                            }}
-                            onClick={() => {
-                              const link = document.createElement('a');
-                              link.href = `data:image/jpeg;base64,${ad.ad}`;
-                              link.download = 'ad_image.jpg';
-                              link.click();
-                            }}
-                          >
-                            Baixar
-                          </Button.Default>
-                        </div>
-                      </AdsTableCell>
-                      <AdsTableCell>{ad.id_usuario}</AdsTableCell>
-                      <AdsTableCell>
-                        <Btn
-                          onClick={() => aproveAd(ad.id)}
-                          style={{
-                            backgroundColor: 'green',
-                            color: '#fff',
-                            marginRight: '1rem',
-                          }}
-                        >
-                          Aprovar
-                        </Btn>
-                        <Btn
-                          onClick={() => removeAd(ad.id)}
-                          style={{ backgroundColor: 'red', color: '#fff' }}
-                        >
-                          Rejeitar
-                        </Btn>
-                      </AdsTableCell>
-                    </AdsTableRow>
-                  ))}
+                  {notVerifiedAds.length > 0 &&
+                    notVerifiedAds.map(
+                      (ad: { id: number; ad: string; id_usuario: number }) =>
+                        ad !== undefined && (
+                          <AdsTableRow key={ad.id}>
+                            <AdsTableCell>{ad.id}</AdsTableCell>
+                            <AdsTableCell>
+                              <div
+                                style={{
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  gap: '0 1rem',
+                                }}
+                              >
+                                <img
+                                  src={`data:image/jpeg;base64,${ad.ad}`}
+                                  alt="Ad Image"
+                                  style={{ width: '50px', height: '50px' }}
+                                />
+                                <Button.Default
+                                  style={{
+                                    maxWidth: '4rem',
+                                    borderRadius: '0.5rem',
+                                    height: '2rem',
+                                    marginLeft: '.25rem',
+                                  }}
+                                  onClick={() => {
+                                    const link = document.createElement('a');
+                                    link.href = `data:image/jpeg;base64,${ad.ad}`;
+                                    link.download = 'ad_image.jpg';
+                                    link.click();
+                                  }}
+                                >
+                                  Baixar
+                                </Button.Default>
+                              </div>
+                            </AdsTableCell>
+                            <AdsTableCell>{ad.id_usuario}</AdsTableCell>
+                            <AdsTableCell>
+                              <Btn
+                                onClick={() => aproveAd(ad.id)}
+                                style={{
+                                  backgroundColor: 'green',
+                                  color: '#fff',
+                                  marginRight: '1rem',
+                                }}
+                              >
+                                Aprovar
+                              </Btn>
+                              <Btn
+                                onClick={() => removeAd(ad.id)}
+                                style={{
+                                  backgroundColor: 'red',
+                                  color: '#fff',
+                                }}
+                              >
+                                Rejeitar
+                              </Btn>
+                            </AdsTableCell>
+                          </AdsTableRow>
+                        ),
+                    )}
                 </TableBody>
               </AdsTable>
             </TableContainer>

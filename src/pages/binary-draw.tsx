@@ -1,5 +1,5 @@
-import { PepePvpView } from '@/presentation/views';
+import { BinaryDrawView } from '@/presentation/views';
 
-export default function PepePvpPage() {
-  return <PepePvpView />;
+export default function BinaryDrawPage() {
+  return <BinaryDrawView />;
 }
