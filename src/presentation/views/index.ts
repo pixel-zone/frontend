@@ -3,4 +3,5 @@ export { BinaryDrawView } from './BinaryDraw/BinaryDraw';
 export { NotFound } from './NotFound/NotFound';
 export { CyberFlip } from './CyberFlip/CyberFlip';
 export { QuantumLottery } from './QuantumLottery/QuantumLottery';
+export { Leaderboard } from './Leaderboard/Leaderboard';
 export { Account } from './Account/Account';

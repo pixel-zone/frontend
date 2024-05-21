@@ -78,12 +78,12 @@ const AdsTable = styled(Table)`
 
 const AdsTableRow = styled(TableRow)`
   &:nth-of-type(odd) {
-    background-color: #8b8349;
+    background-color: #060314;
   }
 `;
 
 const AdsTableCell = styled(TableCell)`
-  color: #111105;
+  color: #ffffff;
 `;
 
 export const Account = () => {
@@ -291,12 +291,17 @@ export const Account = () => {
         >
           <Title style={{ margin: '1rem 0' }}>Solicitações de anúncio</Title>
           {isSeeingAds ? (
-            <TableContainer style={{ maxWidth: '600px' }}>
+            <TableContainer
+              style={{
+                maxWidth: '600px',
+                border: '2px solid #fdfe02',
+                borderRadius: '0.5rem',
+              }}
+            >
               <AdsTable
                 style={{
-                  borderRadius: '0.5rem',
-                  background: '#969651',
-                  color: '#fff',
+                  background: '#060314',
+                  color: '#ffffff',
                 }}
               >
                 <TableHead>
