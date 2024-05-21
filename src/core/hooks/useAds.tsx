@@ -86,7 +86,7 @@ export const useAds = () => {
 
       return response.data.anuncios;
     } catch (e) {
-      console.log('Ocorreu um erro ao coletar o anúncio verificado');
+      console.log(e, 'Ocorreu um erro ao coletar o anúncio verificado');
     }
   };
 

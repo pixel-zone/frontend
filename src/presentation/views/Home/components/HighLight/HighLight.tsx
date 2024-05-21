@@ -20,8 +20,8 @@ export const HighLight: React.FC = () => {
     });
 
     console.log('response', response);
-    if (response.length > 0) {
-      setHomeAds(response[response.length - 1].ad);
+    if (response?.length > 0) {
+      setHomeAds(response[response?.length - 1].ad);
     } else {
       console.log('No ads retrieved');
     }
