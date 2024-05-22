@@ -155,49 +155,6 @@ const SocialMedia = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* &::before {
-    content: '';
-    z-index: -1;
-    display: block;
-    position: absolute;
-    inset: 0;
-    top: -80px;
-    width: 250px;
-    left: -32px;
-    padding: 0.15rem 0 0 0;
-    background: linear-gradient(
-      270deg,
-      ${({ theme }) => theme.colors.primary['02']} 0%,
-      ${({ theme }) => theme.colors.primary['01']} 50%,
-      ${({ theme }) => theme.colors.primary['02']} 100%
-    );
-    -webkit-mask: ${({
-    theme,
-  }) => `linear-gradient( ${theme.colors.neutral['01']} 0 0) content-box,
-      linear-gradient(${theme.colors.neutral['01']} 0 0)`};
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-  }
-
-  &::after {
-    content: '';
-    z-index: -1;
-    display: block;
-    position: absolute;
-    inset: 0;
-    top: -20px;
-    width: 250px;
-    left: -32px;
-    padding: 0.15rem 0 0 0;
-    background:  background-color: #292909;;
-    -webkit-mask: ${({
-    theme,
-  }) => `linear-gradient( ${theme.colors.neutral['01']} 0 0) content-box,
-      linear-gradient(${theme.colors.neutral['01']} 0 0)`};
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-  } */
 `;
 
 const SocialMediaItem = styled.div<IMenuItemProps>`
@@ -229,30 +186,6 @@ const SocialMediaItem = styled.div<IMenuItemProps>`
   }
 `;
 
-const Languages = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-`;
-
-const Language = styled.div<{ $selected: boolean }>`
-  border: 2px solid
-    ${({ theme, $selected }) =>
-      $selected ? theme.colors.neutral['03'] : 'transparent'};
-  border-radius: 100%;
-  height: 2.25rem;
-
-  img {
-    width: 2rem;
-    height: 2rem;
-    object-fit: contain;
-    cursor: pointer;
-  }
-`;
-
 export const MenuStyles = {
   Container,
   Content,
@@ -261,6 +194,4 @@ export const MenuStyles = {
   SocialMedia,
   Connect,
   Account,
-  Languages,
-  Language,
 };

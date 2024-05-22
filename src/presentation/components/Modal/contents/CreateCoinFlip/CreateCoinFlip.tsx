@@ -5,7 +5,7 @@ import ninjaCoinTails from '@/presentation/assets/ninja-tails.png';
 
 import { useModal } from '@/core/hooks/useModal';
 import { Button } from '@/presentation/components';
-import { Close } from '@/presentation/assets/wallet/close';
+import { Close } from '@/presentation/assets/close';
 import { handleInputChange } from '@/core/utils/formats';
 import { CreateCoinFlipStyles } from './styles';
 import { useTranslation } from 'react-i18next';

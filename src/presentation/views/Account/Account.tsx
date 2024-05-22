@@ -33,7 +33,7 @@ const FormContainer = styled('form')`
 `;
 
 const WhiteTextField = styled(TextField)`
-  background-color: #111105 !important;
+  background-color: #292909 !important;
 
   & .MuiOutlinedInput-root {
     fieldset {
@@ -78,7 +78,7 @@ const AdsTable = styled(Table)`
 
 const AdsTableRow = styled(TableRow)`
   &:nth-of-type(odd) {
-    background-color: #060314;
+    background-color: #292909;
   }
 `;
 
@@ -86,7 +86,7 @@ const AdsTableCell = styled(TableCell)`
   color: #ffffff;
 `;
 
-export const Account = () => {
+export const Account: React.FC = () => {
   const { account } = useAccountState();
   const permEmail = account.email;
   const currentUsername = account.username;
@@ -300,7 +300,7 @@ export const Account = () => {
             >
               <AdsTable
                 style={{
-                  background: '#060314',
+                  background: '#292909',
                   color: '#ffffff',
                 }}
               >

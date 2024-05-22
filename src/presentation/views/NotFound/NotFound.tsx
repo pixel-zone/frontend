@@ -1,4 +1,3 @@
-import { NotFoundIcon } from '@/presentation/assets/not-found';
 import { NotFoundStyles } from './styles';
 import { Button } from '@/presentation/components';
 import { Link } from '@/presentation/components';

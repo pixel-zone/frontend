@@ -2,10 +2,9 @@ import { ChangeEvent, useState } from 'react';
 import Image from 'next/image';
 
 import { validateTickets } from '@/core/utils/validateTickets';
-import { Close } from '@/presentation/assets/wallet/close';
+import { Close } from '@/presentation/assets/close';
 import { Button } from '@/presentation/components';
 import { useModal } from '@/core/hooks/useModal';
-import neko from '@/presentation/assets/nekoicon.webp';
 import lottery from '@/presentation/assets/tickets-float.png';
 import { BuyQuantumLotteryStyles } from './styles';
 

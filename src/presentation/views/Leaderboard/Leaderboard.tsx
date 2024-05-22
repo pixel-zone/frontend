@@ -20,12 +20,12 @@ export const Leaderboard: React.FC = () => {
   `;
 
   const LeaderboardTable = styled(Table)`
-    background-color: #f5f5f5;
+    background-color: #292909;
   `;
 
   const LeaderboardTableRow = styled(TableRow)`
     &:nth-of-type(odd) {
-      background-color: #060314;
+      background-color: #292909;
     }
   `;
 
@@ -67,8 +67,7 @@ export const Leaderboard: React.FC = () => {
         >
           <LeaderboardTable
             style={{
-              background: '#060314',
-              color: '#ffffff',
+              background: '#292909',
             }}
           >
             <TableHead>

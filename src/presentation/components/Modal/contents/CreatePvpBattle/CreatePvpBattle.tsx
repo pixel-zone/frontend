@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Close } from '@/presentation/assets/wallet/close';
+import { Close } from '@/presentation/assets/close';
 import ninjaBlue from '@/presentation/assets/pvp-battles/ninja-blue-slot.png';
 import ninjaGreen from '@/presentation/assets/pvp-battles/ninja-green-slot.png';
 import ninjaGray from '@/presentation/assets/pvp-battles/ninja-gray-slot.png';
