@@ -21,10 +21,13 @@ const Skin = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 0.5rem;
-  padding: 1rem 0.5rem;
+  padding: 1rem 1rem;
   background-color: #292909;
+  min-width: 14rem;
   border-radius: 0.5rem;
+  @media (max-width: 765px) {
+    width: 100%;
+  }
 
   > div {
     display: flex;
@@ -34,7 +37,7 @@ const Skin = styled.div`
 
     > span {
       color: ${({ theme }) => theme.colors.neutral['01']};
-      font-size: 1rem;
+      font-size: 0.875rem;
       text-align: center;
       padding: 0.5rem;
       font-weight: 400;
@@ -42,7 +45,7 @@ const Skin = styled.div`
 
     > p {
       color: ${({ theme }) => theme.colors.primary['03']};
-      font-size: 0.875rem;
+      font-size: 0.75rem;
       font-weight: 700;
     }
   }

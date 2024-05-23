@@ -33,9 +33,9 @@ export const menuItems = [
     logo: leaderboard,
     path: '/skins-store',
   },
-  {
-    label: 'My Skins',
-    logo: leaderboard,
-    path: '/my-skins',
-  },
+  // {
+  //   label: 'My Skins',
+  //   logo: leaderboard,
+  //   path: '/my-skins',
+  // },
 ];

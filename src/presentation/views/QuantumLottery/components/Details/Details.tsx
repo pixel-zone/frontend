@@ -45,7 +45,7 @@ export const Details = () => {
         <DetailsStyles.DetailsHeader>
           <p>{t('Próximo sorteio')}</p>
           <p>
-            {t('Sorteio Nº')} {7 || '-'}
+            {t('Sorteio Nº')} {'-'}
           </p>
         </DetailsStyles.DetailsHeader>
         <DetailsStyles.DetailsContent>

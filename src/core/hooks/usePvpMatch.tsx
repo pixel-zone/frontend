@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export const usePvpMatch = () => {
   const baseUrl = 'http://localhost:8081/api/v1/pixel_zone/matchmaking';
@@ -7,6 +8,7 @@ export const usePvpMatch = () => {
   const getOpenMatches = async () => {
     try {
       const response = await axios.get(`${baseUrl}/coleta`);
+      console.log(response.data.jogos);
       return response.data;
     } catch (error) {
       console.log('Error on getting open matches:', error);
@@ -22,11 +24,14 @@ export const usePvpMatch = () => {
   }) => {
     try {
       const response = await axios.post(`${baseUrl}/cria`, {
-        id_usuario: userId,
-        id_tipo_jogo: gameTypeId,
+        id: userId,
+        game_type_id: gameTypeId,
       });
+      toast.success('Partida criada com sucesso');
+      console.log(response.data);
       return response.data;
     } catch (error) {
+      toast.error('Erro ao criar partida');
       console.log('Error on creating match:', error);
     }
   };

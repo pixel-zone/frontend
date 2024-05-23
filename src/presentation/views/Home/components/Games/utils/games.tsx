@@ -8,6 +8,7 @@ import tournamentsGame from '@/presentation/assets/tournaments-game.png';
 import bingoGame from '@/presentation/assets/bingo-game.png';
 import coinsFloat from '@/presentation/assets/coins-float.png';
 import ticketsFloat from '@/presentation/assets/tickets-float.png';
+import ninjaGreen from '@/presentation/assets/pvp-battles/ninja-green-slot.png';
 
 export const games = [
   {
@@ -26,18 +27,18 @@ export const games = [
     name: 'Binary Draw ',
     blocked: false,
     link: '/binary-draw',
-    bgImage: '',
+    bgImage: ninjaGreen,
   },
-  {
-    name: 'Connect Four',
-    blocked: true,
-    link: '/connect-four',
-    bgImage: '',
-  },
-  {
-    name: 'Xadrez',
-    blocked: true,
-    link: '/',
-    bgImage: '',
-  },
+  // {
+  //   name: 'Connect Four',
+  //   blocked: true,
+  //   link: '/connect-four',
+  //   bgImage: '',
+  // },
+  // {
+  //   name: 'Xadrez',
+  //   blocked: true,
+  //   link: '/',
+  //   bgImage: '',
+  // },
 ];

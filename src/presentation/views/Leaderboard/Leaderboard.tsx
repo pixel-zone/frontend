@@ -73,36 +73,36 @@ export const Leaderboard: React.FC = () => {
             <TableHead>
               <TableRow>
                 <LeaderboardTableCell style={{ fontWeight: 'Bold' }}>
-                  ID do usuário
+                  Posição
                 </LeaderboardTableCell>
                 <LeaderboardTableCell style={{ fontWeight: 'Bold' }}>
                   Username
                 </LeaderboardTableCell>
                 <LeaderboardTableCell style={{ fontWeight: 'Bold' }}>
-                  Pontos
+                  Pixel Points
                 </LeaderboardTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               <LeaderboardTableRow>
-                <LeaderboardTableCell>0</LeaderboardTableCell>
-                <LeaderboardTableCell>joaozinho</LeaderboardTableCell>
-                <LeaderboardTableCell>1000</LeaderboardTableCell>
+                <LeaderboardTableCell>1</LeaderboardTableCell>
+                <LeaderboardTableCell>joaozinho_gamer</LeaderboardTableCell>
+                <LeaderboardTableCell>2000</LeaderboardTableCell>
               </LeaderboardTableRow>
               <LeaderboardTableRow>
-                <LeaderboardTableCell>0</LeaderboardTableCell>
-                <LeaderboardTableCell>joaozinho</LeaderboardTableCell>
-                <LeaderboardTableCell>1000</LeaderboardTableCell>
+                <LeaderboardTableCell>2</LeaderboardTableCell>
+                <LeaderboardTableCell>pedrinho_mata_porco</LeaderboardTableCell>
+                <LeaderboardTableCell>1750</LeaderboardTableCell>
               </LeaderboardTableRow>
               <LeaderboardTableRow>
-                <LeaderboardTableCell>0</LeaderboardTableCell>
-                <LeaderboardTableCell>joaozinho</LeaderboardTableCell>
-                <LeaderboardTableCell>1000</LeaderboardTableCell>
+                <LeaderboardTableCell>4</LeaderboardTableCell>
+                <LeaderboardTableCell>luan_gameplays</LeaderboardTableCell>
+                <LeaderboardTableCell>1500</LeaderboardTableCell>
               </LeaderboardTableRow>
               <LeaderboardTableRow>
-                <LeaderboardTableCell>0</LeaderboardTableCell>
-                <LeaderboardTableCell>joaozinho</LeaderboardTableCell>
-                <LeaderboardTableCell>1000</LeaderboardTableCell>
+                <LeaderboardTableCell>4</LeaderboardTableCell>
+                <LeaderboardTableCell>shaolin123</LeaderboardTableCell>
+                <LeaderboardTableCell>1100</LeaderboardTableCell>
               </LeaderboardTableRow>
             </TableBody>
           </LeaderboardTable>
