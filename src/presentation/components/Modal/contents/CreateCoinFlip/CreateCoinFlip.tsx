@@ -5,10 +5,11 @@ import ninjaCoinTails from '@/presentation/assets/ninja-tails.png';
 
 import { useModal } from '@/core/hooks/useModal';
 import { Button } from '@/presentation/components';
-import { Close } from '@/presentation/assets/wallet/close';
-import { handleInputChange } from '@/core/utils/formats';
+import { Close } from '@/presentation/assets/close';
 import { CreateCoinFlipStyles } from './styles';
 import { useTranslation } from 'react-i18next';
+import { usePvpMatch } from '@/core/hooks/usePvpMatch';
+import { useAccountState } from '@/core/states/account';
 
 export const CreateCoinFlip: React.FC = () => {
   const { t } = useTranslation();
@@ -17,8 +18,9 @@ export const CreateCoinFlip: React.FC = () => {
 
   const [coin, setCoin] = useState<'heads' | 'tails' | ''>('');
   const [amount, setAmount] = useState('');
-
+  const { createMatch, getOpenMatches, joinMatch } = usePvpMatch();
   const newAmount = Number(amount);
+  const { account } = useAccountState();
 
   return (
     <CreateCoinFlipStyles.Container
@@ -31,21 +33,6 @@ export const CreateCoinFlip: React.FC = () => {
         </div>
       </CreateCoinFlipStyles.Header>
       <form>
-        <div>
-          <label>
-            {t('Ticket')}: <small>(Min 0.001 Pixel Points)</small>
-          </label>
-          <input
-            placeholder="0.1"
-            onChange={e => {
-              handleInputChange({
-                event: e,
-                setAmount: setAmount,
-              });
-            }}
-          />
-          <span>{t('The minimum amount is')} 0.001 Pixel Points</span>
-        </div>
         <div>
           <label>{t('Escolha um lado')}:</label>
           <CreateCoinFlipStyles.Coins>
@@ -69,7 +56,10 @@ export const CreateCoinFlip: React.FC = () => {
             </div>
           </CreateCoinFlipStyles.Coins>
         </div>
-        <Button.Default disabled={coin === '' || !newAmount} type="button">
+        <Button.Default
+          onClick={() => createMatch({ gameTypeId: 1, userId: account.id })}
+          type="button"
+        >
           Criar
         </Button.Default>
       </form>

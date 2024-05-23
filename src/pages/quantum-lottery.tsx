@@ -1,7 +1,7 @@
-import { NekoLottery } from '@/presentation/views';
+import { QuantumLottery } from '@/presentation/views';
 
-const NekoLotteryPage: React.FC = () => {
-  return <NekoLottery />;
+const QuantumLotteryPage: React.FC = () => {
+  return <QuantumLottery />;
 };
 
-export default NekoLotteryPage;
+export default QuantumLotteryPage;

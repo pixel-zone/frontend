@@ -23,7 +23,13 @@ export const Games: React.FC = () => {
         >
           {games.map(({ name, bgImage, blocked, link }, index) => {
             return (
-              <Grid item md={6} xs={12} lg={index <= 1 ? 6 : 4} key={name}>
+              <Grid
+                item
+                md={index <= 1 ? 6 : 12}
+                xs={12}
+                lg={index <= 1 ? 6 : 12}
+                key={name}
+              >
                 <GamesStyles.Card $blocked={blocked}>
                   <p>{name}</p>
                   {blocked ? (

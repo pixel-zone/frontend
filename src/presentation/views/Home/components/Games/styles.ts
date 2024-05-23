@@ -11,6 +11,7 @@ const Container = styled.div`
       display: flex;
       flex-wrap: nowrap;
       overflow-x: auto;
+      flex-direction: column;
     }
   }
 `;

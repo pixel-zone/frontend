@@ -1,6 +1,8 @@
 export { Home } from './Home/Home';
-export { PepePvpView } from './PepePvp/PepePvp';
+export { BinaryDrawView } from './BinaryDraw/BinaryDraw';
 export { NotFound } from './NotFound/NotFound';
-export { NinjaCoinFlip } from './NinjaCoinFlip/NinjaCoinFlip';
-export { NekoLottery } from './NekoLottery/NekoLottery';
+export { CyberFlip } from './CyberFlip/CyberFlip';
+export { QuantumLottery } from './QuantumLottery/QuantumLottery';
+export { Leaderboard } from './Leaderboard/Leaderboard';
+export { SkinsStore } from './SkinsStore/SkinsStore';
 export { Account } from './Account/Account';

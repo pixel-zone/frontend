@@ -1,14 +1,3 @@
-export const formatAddress = (input: string): string => {
-  if (!input) {
-    return '-';
-  }
-
-  const shortenedString = `${input?.substring(0, 4)}...${input?.substring(
-    input.length - 3,
-  )}`;
-  return shortenedString;
-};
-
 export interface IHandleInputChangeProps {
   event: React.ChangeEvent<HTMLInputElement>;
   setAmount: React.Dispatch<React.SetStateAction<string>>;

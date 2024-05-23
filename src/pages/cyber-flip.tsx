@@ -1,5 +1,5 @@
-import { NinjaCoinFlip } from '@/presentation/views';
+import { CyberFlip } from '@/presentation/views';
 
-export default function NinjaCoinFlipPage() {
-  return <NinjaCoinFlip />;
+export default function CyberFlipPage() {
+  return <CyberFlip />;
 }

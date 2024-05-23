@@ -1,6 +1,6 @@
 import { atom, useRecoilState } from 'recoil';
 
-export type ILanguages = 'en' | 'tr' | 'pt';
+export type ILanguages = 'en' | 'pt';
 
 const languagesState = atom({
   key: 'languages',
