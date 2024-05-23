@@ -13,8 +13,4 @@ export const languages = [
     lang: 'pt',
     img: <Image src={ptIcon} alt="portugues" />,
   },
-  {
-    lang: 'tr',
-    img: <Image src={turkeyIcon} alt="turkey" />,
-  },
 ];

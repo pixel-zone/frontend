@@ -20,8 +20,8 @@ export const HighLight: React.FC = () => {
     });
 
     console.log('response', response);
-    if (response.length > 0) {
-      setHomeAds(response[0].ad);
+    if (response?.length > 0) {
+      setHomeAds(response[response?.length - 1].ad);
     } else {
       console.log('No ads retrieved');
     }
@@ -33,42 +33,34 @@ export const HighLight: React.FC = () => {
   return (
     <Container maxWidth="xl">
       <Grid container height="auto">
-        <HighLighStyles.Content
-          item
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexDirection: 'row',
-          }}
-        >
-          <h5>
-            {' '}
-            Bem vindo ao PixelZone
-            <br /> <br />A sua plataforma de jogos PvP <br /> feita para se
-            divertir com amigos.
-          </h5>
-          {homeAds !== undefined ? (
-            <Image
-              src={`data:image/jpeg;base64,${homeAds}`}
-              width={200}
-              height={200}
-              style={{
-                width: '120%',
-                height: '120%',
-                objectFit: 'scale-down',
-              }}
-            />
-          ) : (
-            <div>
+        <HighLighStyles.Content item>
+          <HighLighStyles.AdContainer>
+            <HighLighStyles.HomeText>
+              <h5>
+                Bem vindo ao PixelZone
+                <br /> <br />A sua plataforma de jogos PvP <br /> feita para se
+                divertir com amigos.
+              </h5>
+            </HighLighStyles.HomeText>
+
+            {homeAds !== undefined ? (
               <Image
-                src={boy}
-                alt="boy"
-                width={350}
-                style={{ marginRight: '-9rem' }}
+                src={`data:image/jpeg;base64,${homeAds}`}
+                width={200}
+                height={200}
+                alt="ad"
               />
-            </div>
-          )}
+            ) : (
+              <div>
+                <Image
+                  src={boy}
+                  alt="boy"
+                  width={350}
+                  style={{ marginRight: '-9rem' }}
+                />
+              </div>
+            )}
+          </HighLighStyles.AdContainer>
         </HighLighStyles.Content>
       </Grid>
     </Container>

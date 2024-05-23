@@ -14,10 +14,8 @@ export const useBan = () => {
       );
 
       toast.success('Usuário banido com sucesso');
-      console.log('Usuário banido com sucesso');
       return response.data;
     } catch (error) {
-      console.log('userId', userId);
       toast.error('Erro ao banir usuário');
       console.error('Erro ao banir usuário: ', error);
     }

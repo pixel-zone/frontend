@@ -2,7 +2,7 @@ import Image from 'next/image';
 import styled from '@emotion/styled';
 
 const Container = styled.div`
-  width: 38rem;
+  min-width: 30rem;
   background-color: ${({ theme }) => theme.colors.primary['04']};
   border-radius: 0.5rem;
   padding: 1.5625rem;
