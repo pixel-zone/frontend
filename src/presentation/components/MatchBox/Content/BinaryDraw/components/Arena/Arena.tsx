@@ -11,9 +11,9 @@ import { MatchBoxStyles } from '@/presentation/components/MatchBox/styles';
 import { useModal } from '@/core/hooks/useModal';
 import { usePlay } from '@/core/hooks/usePlay';
 import { useAccountState } from '@/core/states/account';
-
+import ninjaHeads from '@/presentation/assets/ninja-heads.png';
 import { ArenaStyles } from './styles';
-
+import Image from 'next/image';
 interface IArena {
   match: any;
 }
@@ -29,6 +29,8 @@ export const Arena: React.FC<IArena> = ({ match }) => {
   if (status === 'finished') {
     return null;
   }
+
+  console.log('arena', match);
 
   return (
     <Box
@@ -56,13 +58,10 @@ export const Arena: React.FC<IArena> = ({ match }) => {
         )}
         <MatchBoxStyles.SidesPvpContainer fighting={status === 'playing'}>
           <ArenaStyles.Header>
-            <p>
-              {t('Ticket')}: {(Number(match?.ticket) / 10 ** 18)?.toFixed(2)}{' '}
-              Pixel Points
-            </p>
+            <p>Prêmio: 50 Pixel Points</p>
           </ArenaStyles.Header>
           <MatchBoxStyles.SidePvp>
-            {ninjasSlot[match?.creator_ninja as keyof typeof ninjasSlot]}
+            <Image id="winner" src={ninjaHeads} alt="ninja pink" width={50} />
           </MatchBoxStyles.SidePvp>{' '}
           <small>
             {count <= 3 && match?.finished
@@ -85,11 +84,16 @@ export const Arena: React.FC<IArena> = ({ match }) => {
                   })
                 }
               >
-                Entrar na Partida
+                Entrar
               </Button.Default>
             ) : (
               <>
-                {ninjasSlot[match?.opponent_ninja as keyof typeof ninjasSlot]}
+                <Image
+                  id="winner"
+                  src={ninjaHeads}
+                  alt="ninja pink"
+                  width={50}
+                />
               </>
             )}
           </MatchBoxStyles.SidePvp>

@@ -38,7 +38,10 @@ export const SkinsStore: React.FC = () => {
                 <span>Preço:</span>
                 <p>{skin.price} Pixel Points</p>
               </div>
-              {skin.isPurchased ? (
+              {/* {skin.isPurchased ? (
+                <Button.Outlined disabled>Adquirida</Button.Outlined>
+              ) : ( */}
+              {false ? (
                 <Button.Outlined disabled>Adquirida</Button.Outlined>
               ) : (
                 <Button.Default>Comprar</Button.Default>
