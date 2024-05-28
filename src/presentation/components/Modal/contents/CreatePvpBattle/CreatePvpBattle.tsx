@@ -29,14 +29,14 @@ export const CreatePvpBattle = ({
   const { t } = useTranslation();
 
   const { closeModal } = useModal();
-
+  const { createMatch, getOpenMatches, joinMatch } = usePvpMatch();
   const [selected, setSelected] = useState(0);
   const [amount, setAmount] = useState('');
-
+  const { account } = useAccountState();
   return (
     <CreatePvpBattleStyles.Container>
       <CreatePvpBattleStyles.Header>
-        <h4>{opponent ? 'Entrar na Partida' : t('Criar Partida')}</h4>
+        <h4>{opponent ? 'Entrar' : t('Criar Partida')}</h4>
         <div onClick={() => closeModal()}>
           <Close />
         </div>
@@ -87,7 +87,9 @@ export const CreatePvpBattle = ({
           <Button.Default
             // disabled={selected === 0 || (!opponent && !newAmount)}
             type="button"
-            // onClick={() => createMatch({ gameTypeId: 1, userId: account.id })}
+            onClick={() =>
+              createMatch({ gameTypeId: 5, userId: account.id, choice: 0 })
+            }
           >
             Criar
           </Button.Default>

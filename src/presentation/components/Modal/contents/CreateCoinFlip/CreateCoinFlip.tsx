@@ -57,7 +57,13 @@ export const CreateCoinFlip: React.FC = () => {
           </CreateCoinFlipStyles.Coins>
         </div>
         <Button.Default
-          onClick={() => createMatch({ gameTypeId: 1, userId: account.id })}
+          onClick={() => {
+            createMatch({
+              gameTypeId: 1,
+              userId: account.id,
+              choice: coin === 'heads' ? 0 : 1,
+            });
+          }}
           type="button"
         >
           Criar

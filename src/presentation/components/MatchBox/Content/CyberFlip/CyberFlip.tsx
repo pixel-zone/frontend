@@ -11,19 +11,22 @@ import { MatchBoxStyles } from '../../styles';
 import { CyberFlipStyles } from './styles';
 import { Grid } from '@mui/material';
 import { usePvpMatch } from '@/core/hooks/usePvpMatch';
-import { useEffect, useState } from 'react';
-import { match } from 'assert';
+import { use, useEffect, useState } from 'react';
 
 export const CyberFlipPvp: React.FC = () => {
   const { t } = useTranslation();
   const [matches, setMatches] = useState<any[]>();
   const { openModal } = useModal();
-
-  const { getOpenMatches } = usePvpMatch();
+  const { getOpenMatches, drawMatch } = usePvpMatch();
 
   useEffect(() => {
-    getOpenMatches();
-  }, []);
+    const fetchMatches = async () => {
+      const matchesOpen = await getOpenMatches();
+      setMatches(matchesOpen?.jogos || []);
+    };
+
+    fetchMatches();
+  }, [matches]);
 
   return (
     <>
@@ -37,7 +40,7 @@ export const CyberFlipPvp: React.FC = () => {
           }}
         >
           <h4>{t('Cyber Coin Flip')}</h4>
-          <p>{`(${t('Partidas Abertas')}: ${0})`}</p>
+          <p>{`(${t('Partidas Abertas')}: ${matches?.length || 0})`}</p>
         </Grid>
         <Grid
           xs={12}
@@ -68,16 +71,17 @@ export const CyberFlipPvp: React.FC = () => {
       </CyberFlipStyles.Info>
 
       <MatchBoxStyles.PvPMatchesContainer>
-        {/* {matches?.map(match => (
-          <Arena match={match} key={match?.id} />
-        ))}
-        {slots.slice(matches?.length).map((_, index) => {
+        {matches !== undefined &&
+          matches?.length > 0 &&
+          Array.isArray(matches) &&
+          matches?.map((match, index) => <Arena match={match} key={index} />)}
+        {slots.slice(matches?.length || 0).map((_, index) => {
           return (
-            <CyberFlipStyles.Slot key={2}>
+            <CyberFlipStyles.Slot key={index}>
               <p>Esperando por partida...</p>
             </CyberFlipStyles.Slot>
           );
-        })} */}
+        })}
       </MatchBoxStyles.PvPMatchesContainer>
     </>
   );
